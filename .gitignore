@@ -223,3 +223,6 @@ TSWLatexianTemp*
 
 # add pdf figures
 !/figures/*.pdf
+
+# add main.pdf
+!main.pdf
