@@ -1,0 +1,270 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+%\documentclass[bachelor]{dutthesis} % 本科
+\documentclass[master]{dutthesis} % 硕士
+%\documentclass[doctor]{dutthesis} % 博士
+\usepackage{CJK}
+\usepackage{amsmath}
+\usepackage{amsfonts} 
+\usepackage{bm} 
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{subfigure}
+\usepackage{tabularx}
+\usepackage{arydshln}
+\usepackage{array}
+\usepackage{physics}
+\usepackage{enumerate,paralist} %产生列表，有序，缩进等功能
+\usepackage{layouts} %用于绘制页面布局
+\usepackage{layout} %用于绘制页面布局
+\usepackage{listings} %插入代码用，不用可以取消
+\lstset{frame=tlrb,fontadjust=true,basicstyle=\fontsize{10}{9}\ttfamily,
+emphstyle=\color{red!80},
+emph={root,base},emphstyle={\color{blue}},
+tab=\rightarrowfill,keywordstyle={[1]\color{blue!80}},
+keywordstyle={[2]\color{red!50}},
+stringstyle=\color{magenta},
+breaklines=true,
+columns=fixed,
+commentstyle=\color{black!50}}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  使得layout使用mm做单位，不重要  %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\renewcommand*{\lay@value}[2]{%
+  \strip@pt\dimexpr0.351459\dimexpr\csname#2\endcsname\relax\relax mm%
+}
+\makeatother
+
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
+ % 这里是导言区
+\begin{document}
+\categorynumber{000} % 分类采用《中国图书资料分类法》
+\UDC{000}            %《国际十进分类法UDC》的类号
+\secretlevel{公开}    %学位论文密级分为"公开"、"内部"、"秘密"和"机密"四种
+\studentid{11402004}   %学号要完整，前面的零不能省略。
+
+\title{大连理工大学毕业论文模板-- \TeX}{}{The Format Criterion of Dissertation of 
+DUT}{subtitle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  title包含四个定义，分别是中文题目，中文副标题，
+%英文标题，以及英文副标题，没有副标题可以空{}不能不写
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{三分道人}{Mou Xun}
+\advisor{菩提}{祖师}{Puti}{Master}
+%		\coadvisor{副导师}{副教授}{Co-advisor's Name}{Associate Prof.} % 没有
+
+\degree{物理博士} % 详细学位名称
+\major[12em]{理论物理}
+\defenddate{答辩日期}
+\authorizedate{学位授予日期}
+\department{物理学院}{school of physics}
+\duration{2010年9月—201年6月}
+\address{物理系}
+\maketitle
+
+\begin{abstract}{写作规范；排版格式；博士学位论文 }
+大连理工大学博士研究生撰写学位论文应当符合写作规范和排版格式的要求，以下格式为研究生院依据国家标准和行业规范所编制的博士学位论文模板，供博士研究生参照使用。 
+
+摘要部分说明：
+“摘要”是摘要部分的标题，不可省略。
+
+标题“摘要”选用模板中的样式所定义的“摘要”；或者手动设置成字体：黑体，居中；字号：小三；1.5倍行距，段前为0行，段后1行。
+
+论文摘要是学位论文的缩影，文字要简练、明确。内容要包括目的、方法、结果和结论。单位制一律换算成国际标准计量单位制，除特殊情况外，数字一律用阿拉伯数码。文中不允许出现插图，重要的表格可以写入。
+
+摘要正文选用模板中的样式所定义的“正文”，每段落首行缩进2个汉字；或者手动设置成每段落首行缩进2个汉字，字体：宋体，字号：小四，行距：多倍行距 1.25，间距：前段、后段均为0行，取消网格对齐选项。
+
+摘要的主要内容为，简述全文的目的和意义、采用方法、主要研究内容和结论。
+
+篇幅以一页为限，摘要正文后列出3－5个关键词，关键词与摘要之间空一行。
+
+“关键词：”是关键词部分的引导，不可省略，黑体，小四。
+
+关键词请尽量用《汉语主题词表》等词表提供的规范词。关键词之间用分号间隔，末尾不加标点。
+
+\end{abstract}
+
+\begin{englishabstract}{Greek Alphabet, Phoenician Alphabet, Language, Deep Learning}
+
+The Greek alphabet has been used to write the Greek language since the late 9th
+century BC or early 8th century BC It was derived from the earlier
+Phoenician alphabet, and was the first alphabetic script to have distinct
+letters for vowels as well as consonants. It is the ancestor of the Latin
+and Cyrillic scripts.Apart from its use in writing the Greek language, in
+both its ancient and its modern forms, the Greek alphabet today also serves
+as a source of technical symbols and labels in many domains of mathematics,
+science and other fields. \par
+In its classical and modern forms, the alphabet has 24 letters, ordered from
+alpha to omega. Like Latin and Cyrillic, Greek originally had only a single
+form of each letter; it developed the letter case distinction between
+upper-case and lower-case forms in parallel with Latin during the modern era.
+
+In its classical and modern forms, the alphabet has 24 letters, ordered from
+alpha to omega. Like Latin and Cyrillic, Greek originally had only a single
+form of each letter; it developed the letter case distinction between
+upper-case and lower-case forms in parallel with Latin during the modern era.
+
+In its classical and modern forms, the alphabet has 24 letters, ordered from
+alpha to omega. Like Latin and Cyrillic, Greek originally had only a single
+form of each letter; it developed the letter case distinction between
+upper-case and lower-case forms in parallel with Latin during the modern era.
+\end{englishabstract}
+\tableofcontents
+\tableofengcontents
+\cleardoublepage
+
+\tableoffigurecontents
+\tableoftablecontents
+%\listoffigures
+%\listoftables
+\stcleardp
+
+\input{SMTable.tex}
+
+\begin{Main} % 开始正文
+\include{introcution}
+\include{chapt1}
+\include{chapt2}
+\include{degrees}
+\end{Main} % 结束正文
+\begin{Appendix}
+    \chapter{附录的工作原理}
+    \echapter{Mechanism of Appendix}
+    附录放置于Main环境之外！！
+    这里附录通过引用Appendix环境使用，具体环境定义为：
+    \begin{lstlisting}[language=TeX]
+	\newenvironment{Appendix}
+	{
+	  \pagestyle{dutstyle}
+	  \@mainmattertrue
+	  \appendix
+	  %\titlecontentsappendix
+	}{\@mainmatterfalse\par
+	  \thispagestyle{dutstyle}\clearpage
+	}
+    \end{lstlisting}
+
+
+    \section{附录的特点}
+    由于使用了 \lstinline|\appendix|命令，因此附录之后章节计数器将清空并改用字母标记！！ 
+    \chapter{目录中的附录实现以及特点}
+    为了写作方便，附录中的章、节命令不变依旧是 \lstinline|\chapter \section ...|，但是这给编写论文带来一定难度，因此这里做了些小聪明的修改。
+    \section{目录中的附录}
+    根据学校要求，目录中附录应该与章地位相同，但是目录标记不同。
+    在这里通过对章的计数器形状判别，如果为 \lstinline|\AppendixListAlph|中定义的字母则该章为附录，按照特殊格式排版。 
+    部分代码如下：
+    \begin{lstlisting}[language=TeX]
+	\titlecontents{chapter}[0pt]{\song \xiaosihao}
+	{\IfSubStr{\AppendixListAlph}{\thecontentslabel}{\contentslabel[\AppendixTOCName~\thecontentslabel]{0mm}\phantom{\AppendixTOCName~\thecontentslabel}\quad}{\thecontentslabel\quad}}{}
+	{\titlerule*[5pt]{.}\thecontentspage}  %判断chapter计数器是否为字母，字母则为附录
+	\titlecontents{subchapter}[0pt]{\song \xiaosihao}
+	{}{}
+	{\quad\titlerule*[5pt]{.}\thecontentspage}
+    \end{lstlisting}
+    这类附录目录格式修改对于中英文目录都要特殊处理。
+
+    \section{附录标题}
+    附录标题居中，因此本模板将根据之前的计数器判别法判别某章是否为附录，如果为附录重新定义目录格式：
+    \begin{lstlisting}[language=TeX]
+	    \titleformat{\chapter}[hang]{\IfSubStr{\AppendixListAlph}
+	    {\thechapter}{\centering}{}
+	    \hei \xiaosanhao \linespacing{1.5}}{\chaptertitlename}{1em}{}%黑体 小三
+    \end{lstlisting}
+\end{Appendix}
+\begin{Publics}
+    首先列出博士生攻读博士学位期间发表（含已录用）与学位论文有关的学术论文，并注明属于学位论文内容的部分(章节)，作者（最多三个）、论文题目、刊物名称、时间、卷期号、页码以及检索信息、与学位论文相关章节。其他时间或与学位论文内容(章节)无关的论文不得列出。
+
+其次列出在攻读博士学位期间参与的科研项目(如国家自然科学基金或国家“863”计划等)，以及在这期间取得的科研成果(申请的发明专利、科研奖励等)。
+
+书写格式说明：
+
+标题“攻读博士学位期间科研项目及科研成果”选用模板中的样式所定义的“发表学术论文情况”；或者手动设置成字体：黑体，居中，字号：小三，1.5倍行距，段后1行，段前为0行。
+
+“攻读博士学位期间科研项目及科研成果”正文选用模板中的样式所定义的“正文”，每段落首行缩进2字；或者手动设置成每段落首行缩进2字，字体：宋体，字号：小四，行距：多倍行距 1.25，间距：前段、后段均为0行。
+
+例：
+
+发表论文
+
+[1] DesES MaraisARAIS D. J., Strauss TRAUSS H. , SummonsUMMONS R. E., et al. Carbon isotope evidence for the stepwise oxidation of the Proterozoic environment [J]. Nature, 1992,359:605-609. (SCI检索号：123DX) （本学位论文第一章）
+~\\
+
+参与科研项目
+
+[1] 国家自然科学基金项目(51276055)：西南喀斯特山区土地利用和土地覆被变化及其对土地资源可持续性影响研究，2013.1 – 2016.12，负责人：爱因斯坦。
+~\\
+
+发明专利
+
+[1] 发明人1，发明人2，发明人3. 多功能一次性压舌板:中国,92214985.2[P]. 发明类别：发明专利，公开（或授权）日期：1993,04,14.
+~\\
+
+
+获得奖励
+
+[1] “大型C/E复合材料构件高质高效加工关键技术及其工艺装备”，机械工业科学技术奖-科技进步一等奖，2013.10， 总排序1。
+\end{Publics}
+\begin{Acknowledgement}{}
+    学位论文中不得书写与论文工作无关的人和事(可以写家人)，对导师的致谢要实事求是。
+
+一同工作的同志对本研究所做的贡献应在论文中做明确的说明并表示谢意。
+
+这部分内容不可省略。
+
+书写格式说明：
+
+标题“致谢”选用模板中的样式所定义的“致谢”；或者手动设置成字体：黑体，居中，字号：小三，1.5倍行距，段后1行，段前为0行。
+
+致谢正文选用模板中的样式所定义的“正文”，每段落首行缩进2字；或者手动设置成每段落首行缩进2字，字体：宋体，字号：小四，行距：多倍行距 1.25，间距：前段、后段均为0行。
+\end{Acknowledgement}
+
+\begin{Resume}
+    \begin{minipage}{0.8\textwidth}
+	    \linespacing{1.6}
+	\begin{tabular}{lp{2\baselineskip}}
+	    姓名:  三分先生\\
+	    性别： 男\\
+	    出生年月:  1991 年 7 月  \\
+	    民族:  汉 \\
+	    籍贯:  灵台方寸山，斜月三星洞\\
+	    研究方向： \LaTeX  以及 \XeLaTeX\\
+	    简历：\\
+	\end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.2\textwidth}
+	\flushright
+	\vspace*{-80pt}
+	    \fboxrule=1.2pt \fboxsep=0pt
+	    \fcolorbox{gray}{white}{
+		 \includegraphics[width=3.5cm,height=5cm]{figures/doctor-hwzs.pdf}
+	}
+\end{minipage}
+
+三分先生不知何许人也，其人额大颡突，发线高耸，额雄踞头部三分，乃以三分为号。
+人或曰，昔者杜甫诗云，``功盖三分国，名称八卦图",
+如此先生岂非有孔明之大志，怀管乐之奇才乎？
+非也，乱世雄图，与治世而何？故无其才，安能谋事。
+天下当混为一，安可分！三分者，徒先生之怪貌者也。
+$\ldots \cdots$
+\end{Resume}
+\authorizationpage
+% 参考文献}
+%\bibliographystyle{GBT7714-2005NLang}
+\bibliography{bibtex.bib}
+\newpage
+\printindex % 索引
+
+%\begidex % 索引n{thebibliography}{99}
+%\bibliographystyle{ieee}
+%\bibliography{seuthesis}
+\end{document}

@@ -1,0 +1,158 @@
+% vim: set textwidth=80:
+% vim: set formatoptions+=m:
+\chapter{不同学位情况说明}
+\echapter{details for different degrees}
+本模板优先支持大连理工大学博士学位论文。
+当选择了不同学位，\verb|\@degree| 将会设定成学位类型，硕士、博士等等。
+学校名在dutthesis.cfg中定义，\verb|\universityname|英文名也在其中。
+（\universityname\makeatletter\@degree\makeatother）
+\section{博士学位论文}
+\esection{doctor thesis}
+\begin{lstlisting}[language=TeX]
+    \documentclass[doctor]{dutthesis} %其他选项也可添加
+\end{lstlisting}
+
+大连理工大学论文模板结构比较混乱，比如标题的格式，加粗不加粗都存在一定争议，本论文中居中标题没有加粗，如果有需要可以自己添加（没必要）。
+此外应该注意博士论文中，独创性声明与版权声明在同一页，模板已经处理好。
+其中独创性声明命令为\verb|\declare|，
+对于博士论文来说，\verb|\declare|包含了版权声明\verb|\dutauthorization|命令（见
+dutthesis-utf8.cfg)。
+
+博士论文中英文摘要不进入目录，目录第一条为绪论，且需要加入英文目录，图、表目录。
+本模板中博士论文可以依次使用命令
+\begin{lstlisting}[language=TeX]
+\tableofcontents
+\tableofengcontents
+\cleardoublepage
+\tableoffigurecontents
+\tableoftablecontents
+\end{lstlisting}
+其中 \lstinline|\cleardoublepage| 用于清空页面到奇数页，而
+\lstinline|\tableofengcontents, \tableoffigurecontents, \tableoftablecontents|为
+（重）新定义的各类目录，这里如果不使用英文目录，则图表目录也不能用上述命令，
+但是 \lstinline|\listoffigures,\listoftables|依旧可以使用，会导致图表目录都另启
+一页。
+
+博士论文需要填写主要符号表这一页，范例如下：
+\begin{lstlisting}[language=TeX]
+\subcapter{主要符号}
+
+\begin{table}[H]
+%\bicaption[table]{主要符号表}{}
+%{Tab.}{}
+%根据学校给出的模板，主要符号表为单独一章，表头无序号，不计入“表目标”中  李2018.3
+\begin{center}
+\begin{tabular}{ccc}
+  \hline
+  % after \\: \hline or \cline{col1-col2}  ...
+  符号          & 代表意义     & 单位  \\
+  $T$   & 温度     & K \\
+  $m$   & 质量     & kg \\
+  $L$   & 长度     & m \\
+  $\kappa$   & 光场耗散     & Hz \\
+  $\omega$   & 频率     & Hz \\
+  $\omega_{m}$   & 机械振子频率     & Hz \\
+  $\gamma_{m}$   & 机械振子耗散率     & Hz \\
+  $g$   & 光力耦合强度     & Hz \\
+  $\hbar$   & 约化普朗克常数(如未特别强调，取$\hbar=1$)     & J$\cdot$ s  \\
+  $k_B$  & 玻尔兹曼常数     & J/K \\
+  $\langle\dots\rangle$   & 取量子态下期望值     & \\
+  $\delta(\dots)$   & 狄拉克函数     & \\ 
+  $\delta_{ij}$   & 克罗内克符号     & \\ 
+  $H_{\textrm{eff}}$   & 有效哈密顿量     & \\ 
+  $H_{\textrm{int}}$   & 相互作用哈密顿量     & \\ 
+  $H_{\textrm{tot}}$   & 总哈密顿量     & \\ 
+\end{tabular}
+\end{center}
+\end{table}
+\end{lstlisting}
+
+成果页面使用定制的Publics环境，定义代码如下：
+\begin{lstlisting}[language=TeX]
+    \newenvironment{Publics}[1][\@publicstitle]
+    {%
+      \stcleardp
+      \phantomsection
+      \addcontentsline{toc}{chapter}{\@publicstitletoc}
+      \subchapter*{#1}
+      \addcontentsline{toe}{chapter}{Achievements}
+      \song\xiaosihao
+    }{\par}
+\end{lstlisting}
+博士的科研成果页面将根据学位而自动修改。
+主要配置为：
+\begin{lstlisting}[language=TeX]
+\newcommand{\@publicstitle}{攻读\@degree 学位期间科研项目及科研成果}
+\newcommand{\@publicstitletoc}{攻读\@degree 学位期间科研项目及科研成果}
+\end{lstlisting}
+
+博士论文需要加入个人简介页面，模板重新定义了Resume环境。
+范例如下：
+\begin{lstlisting}[language=TeX]
+ \begin{Resume}
+    \begin{minipage}{0.8\textwidth}
+	    \linespacing{1.6}
+	\begin{tabular}{lp{2\baselineskip}}
+	    姓名:  三分先生\\
+	    性别： 男\\
+	    出生年月:  1991 年 7 月  \\
+	    民族:  汉 \\
+	    籍贯:  灵台方寸山，斜月三星洞\\
+	    研究方向： \LaTeX  以及 \XeLaTeX\\
+	    简历：\\
+	\end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.2\textwidth}
+	\flushright
+	\vspace*{-80pt}
+	    \fboxrule=1.2pt \fboxsep=0pt
+	    \fcolorbox{gray}{white}{
+		 \includegraphics[width=3.5cm,height=5cm]{figures/doctor-hwzs.pdf}
+		 %插入照片
+	}
+\end{minipage}
+
+三分先生不知何许人也，其人额大颡突，发线高耸，额雄踞头部三分，乃以三分为号。
+人或曰，昔者杜甫诗云，``功盖三分国，名称八卦图",
+如此先生岂非有孔明之大志，怀管乐之奇才乎？
+非也，乱世雄图，与治世而何？故无其才，安能谋事。
+天下当混为一，安可分！三分者，徒先生之怪貌者也。
+$\ldots \cdots$
+\end{Resume}   
+\end{lstlisting}
+
+\section{硕士学位论文}
+\esection{master thesis}
+\begin{lstlisting}[language=TeX]
+    \documentclass[master]{dutthesis} %其他选项也可添加
+\end{lstlisting}
+硕士论文与博士稍有不同。
+
+独创性声明页面不包括版权声明，版权声明在最后一页。
+
+硕士论文只有中文目录，且中英文摘要都要进入目录。
+
+硕士论文有一章为结论，定义了Conclusion环境,博士模板无此环境！！！
+\begin{lstlisting}[language=TeX]
+%%%%%%%%%%%%%%%
+%  结论环境，硕士需要  %
+%%%%%%%%%%%%%%%
+\ifmasterdegree
+\newenvironment{Conclusion}
+{%
+  \stcleardp
+  \phantomsection
+  \addcontentsline{toc}{chapter}{结论}
+  \subchapter*{结论}
+  \addcontentsline{toe}{chapter}{conclusion}
+  \song \xiaosihao
+}{\par}
+\fi
+\end{lstlisting}
+
+硕士论文发表情况页面自动根据 \lstinline|\@degree| 修改，选择硕士论文选项就好。
+
+硕士论文的版权页面将自动生成，为最后一页。
+\section{学士学位}
+\esection{bachelor}
+Waiting
