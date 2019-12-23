@@ -129,8 +129,8 @@ Path = ./font/,
 BoldFont=simhei.ttf,
 ItalicFont=simkai.ttf,
 BoldItalicFont=simfang.ttf
-]{simsun.ttf}
-\setCJKfamilyfont{zhsong}[Path = ./font/]{simsun.ttf}
+]{simsun.ttc}
+\setCJKfamilyfont{zhsong}[Path = ./font/]{simsun.ttc}
 \newcommand{\song}{\CJKfamily{zhsong}}
 \setCJKfamilyfont{zhhei}[Path = ./font/]{simhei.ttf}
 \newcommand{\hei}{\CJKfamily{zhhei}}
@@ -797,12 +797,6 @@ BoldItalicFont=simfang.ttf
 \titlecontents{subsection}[3.5em]{\song \xiaosihao}
 {\thecontentslabel\quad}{}
 {\titlerule*[5pt]{.}\thecontentspage}
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-  \stcleardp
   {
       \linespacing{1.15}%
   \song\xiaosihao%
@@ -942,6 +936,8 @@ BoldItalicFont=simfang.ttf
 \renewcommand{\floatpagefraction}{0.85}
 
 \setcounter{totalnumber}{6}
+\setcounter{tocdepth}{3}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  GBT7714中的上标参考文献被禁用，手动修改上标，同时保留inline  %
