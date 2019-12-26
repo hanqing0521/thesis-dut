@@ -1,0 +1,189 @@
+% vim: set textwidth=80:
+% vim: set formatoptions+=m:
+\chapter{\TeX 使用技巧}
+\echapter{Skills of \TeX}
+\begin{Sketch}
+    本章主要给出本模板中有用的一些技巧，能为编写论文提供极大的方便。
+\end{Sketch}
+\section{编译}
+\esection{compile}
+\label{sec:compile}
+    \XeLaTeX 可以很好的支持中文，引入中文字体极为方便，是中文\TeX 的优秀引擎，
+    本模板使用\XeLaTeX 。
+
+推荐论文每章放置在一个独立的tex文件中，然后使用\verb|\include|命令导入，为了提高
+编译速度，可以在导言区使用 \verb|\includeonly{<tex file1>,<tex file2}|
+来分段编译。
+
+\section{字体}
+\esection{font}
+\label{sec:font}
+    字体文件在目录font中，如果有需要也可以在模板文件
+    dutthesis.cls 中修改字体部分，选择需要的字体。
+    \begin{lstlisting}[language=TeX]
+	\setmainfont[
+	Path = ./font/,
+	BoldFont=timesbd.ttf,
+	ItalicFont=timesi.ttf,
+	BoldItalicFont=timesbi.ttf
+	]{times.ttf}
+
+
+	% 修改中文字体族，增加黑体
+	\setCJKmainfont[
+	Path = ./font/,
+	BoldFont=simhei.ttf,
+	ItalicFont=simkai.ttf,
+	BoldItalicFont=simfang.ttf
+	]{simsun.ttc}
+	\setCJKfamilyfont{zhsong}[Path = ./font/]{simsun.ttc}
+	\newcommand{\song}{\CJKfamily{zhsong}}
+	\setCJKfamilyfont{zhhei}[Path = ./font/]{simhei.ttf}
+	\newcommand{\hei}{\CJKfamily{zhhei}}
+	\setCJKfamilyfont{FZXiHei}[Path = ./font/]{FZXH1K.TTF}
+	\newcommand{\xhei}{\CJKfamily{FZXiHei}}
+	\setCJKfamilyfont{zhkai}[Path = ./font/]{simkai.ttf}
+	\newcommand{\kai}{\CJKfamily{zhkai}}
+	\setCJKfamilyfont{zhfs}[Path = ./font/]{simfang.ttf}
+	\newcommand{\fs}{\CJKfamily{zhfs}}
+	\setCJKfamilyfont{FZXingKai}[Path = ./font/]{FZXKK.TTF}
+	\newcommand{\xkai}{\CJKfamily{FZXingKai}}
+    \end{lstlisting}
+当然为了方便也可以使用本机字体。
+
+
+
+\section{交叉引用}
+\esection{corss reference}
+\label{sec:cross-reference}
+在论文中往往需要对章节、图表、公式进行引用，\LaTeX 编写论文基本依赖于hyperref包
+实现引用。
+
+本模板中推荐使用\verb|\autoref{<the label>}| 交叉引用，其中autoref的相关设置位于
+dutthesis-utf8.cfg中
+\begin{lstlisting}[language=TeX]
+    \renewcommand{\figureautorefname}{图}
+    \renewcommand{\tableautorefname}{表}
+    \renewcommand{\figurename}{图}
+    \def\equationautorefname#1#2\null{方程#1(#2\null)}
+    \def\chapterautorefname#1#2\null{第#1#2 章}
+    \def\subsectionautorefname#1#2\null{#1#2 小节}
+    \def\sectionautorefname#1#2\null{#1#2 节}
+\end{lstlisting}
+基于这些设置，可以很好的实现交叉引用，而且不需要作者对被引用对象的识别，计算机将
+分别对章节、图表、公式加以不同的表述，如：
+\begin{lstlisting}[language=TeX]
+    \autoref{cha:format},
+    \autoref{sec:advance},
+    \autoref{fig:cmm},
+    \autoref{Eq:31},
+\end{lstlisting}
+\autoref{cha:format},
+\autoref{sec:advance},
+\autoref{fig:cmm},
+\autoref{Eq:31},
+当然\verb|\ref \eqref|等方式依旧可以使用，只是相对不如autoref方便。
+
+hyperref包可以通过命令 \verb|\hypersetup{× = ×}| 设置引用连接的格式，使用本模
+板时，可以通过 \verb|\documentclass[hidelinks]{dutthesis}| 选择无格式的交叉
+引用。
+
+\section{参考文献}
+\esection{reference}
+\label{sec:reference}
+本模板使用bibtex引用参考文献，请将需要引用的文献放置于bib文件中
+在需要引用的地方使用\verb|\cite{<keys>}|引用（上标），可以使用
+\verb|\citet{<keys>}| 实现行内引用。
+
+在正文中使用Reference环境输出参考文献
+\begin{lstlisting}[language=TeX]
+\begin{Reference}
+\bibliography{<bib file>}
+\end{Reference}
+\end{lstlisting}
+请记得添加Reference环境！
+
+\section{章节、目录以及相关杂项}
+\esection{chapter,section, contents and others}
+\label{sec:Chapter-section-contents-others}
+本节包含章节、目录以及其格式设定等问题。
+\subsection{章节}
+\esubsection{chapter and section}%
+\label{sub:chapter-section}
+为了实现双语目录，新章节都需要引入响应的英语章节。
+\begin{table}[h]
+    \bicaption[tab:chapter-sections]{中英文章节}{中英文章节命令对照表格，中文名
+	在autoref中也有设定，见\autoref{sec:cross-reference}。
+    }{Tab.}{The command of Chinese and english chapter and sections}
+    \centering
+    \begin{tabular*}{0.85\textwidth}{@{\extracolsep{\fill}}ccc}
+	\hline
+     中文名& 中文命令 & 英文命令 \\ \hline
+     章 & \verb|\chapter[toc name]{chapter name}| & \verb|\echapter{toe name}| \\ \hline
+     节 & \verb|\section| & \verb|\esection| \\ \hline
+     小节 & \verb|\subsection| & \verb|\esubsection| \\ \hline
+    \end{tabular*}
+\end{table}
+英文标题用于生成英文目录，硕士不需要英文目录，因此可以不要英文章节命令。
+
+\subsection{目录}
+\esubsection{contents}%
+\label{sub:contents}
+中文目录使用\verb|\tableofcontents| 生成，英文目录\verb|\tableofengcontents|，
+图表目录\verb|\tableoffigurecontents,\tableoftablecontents|（这个需要存在英文目
+录才行），或者也可以使用\verb|\listoffigures|, \verb|\listoftable|。
+实际上只有博士需要英文，图表目录。
+
+\subsection{杂项}
+\esubsection{others}%
+\label{sub:others}
+摘要使用环境abstract, 英文摘要englishabstract，同时abstract环境附带了关键词选项
+\begin{lstlisting}[language=TeX]
+   \begin{abstract}{keywords,...}
+       .....
+   \end{abstract} 
+   \begin{englishabstract}{english keywords, ....}
+       .....
+   \end{englishabstract}
+\end{lstlisting}
+
+尽管学校的模板中没有对每章正文之前加入摘要，或者简述，遵照过往的经验，依旧定义了
+一个Sketch环境来引入章节简述。
+
+发表论文情况使用环境Publics。
+
+致谢定义了环境 Acknowledgement。
+
+博士论文需要有个人简历，使用环境Resume。
+\begin{lstlisting}[language=TeX]
+    \begin{Resume}
+	\begin{minipage}{0.8\textwidth}
+		\linespacing{1.6}
+	    \begin{tabular}{lp{2\baselineskip}}
+		姓名:  三分先生\\
+		性别： 男\\
+		出生年月:  1991 年 7 月  \\
+		民族:  汉 \\
+		籍贯:  灵台方寸山，斜月三星洞\\
+		研究方向： \LaTeX  以及 \XeLaTeX\\
+		简历：\\
+	    \end{tabular}
+	\end{minipage}
+	\begin{minipage}{0.2\textwidth}
+	    \flushright
+	    \vspace*{-80pt}
+		\fboxrule=1.2pt \fboxsep=0pt
+		\fcolorbox{gray}{white}{
+		     \includegraphics[width=3.5cm,height=5cm]{figures/doctor-hwzs.pdf}
+	    }
+    \end{minipage}
+
+    三分先生不知何许人也，其人额大颡突，发线高耸，额雄踞头部三分，乃以三分为号。
+    人或曰，昔者杜甫诗云，``功盖三分国，名称八卦图",
+    如此先生岂非有孔明之大志，怀管乐之奇才乎？
+    非也，乱世雄图，与治世而何？故无其才，安能谋事。
+    天下当混为一，安可分！三分者，徒先生之怪貌者也。
+    $\ldots \cdots$
+    \end{Resume}
+\end{lstlisting}
+
