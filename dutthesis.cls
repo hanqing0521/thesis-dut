@@ -95,7 +95,7 @@
 \RequirePackage{xstring} % 提供字符比较命令 \IfSubStr
 \newcommand{\AppendixListAlph}{ABCDEFGHIGK} %指定附录使用指标，目录中附录标题通过字母章节计数器识别
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Uppercase the english title (chaper,section,...)  %
+%  Uppercase the english title (chapter,section,...)  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{titlecaps}
 \Addlcwords{a an the and or nor for but so yet to of by at for but in with has
@@ -251,7 +251,9 @@ BoldItalicFont=simfang.ttf
 %%%%%%%%%%
 %  页面结构  %
 %%%%%%%%%%
-\RequirePackage[body={16.0cm, 22.0cm},headsep=1.3cm,top=4cm,footskip=1.25cm,bottom=4.0cm,left=2.5cm,right=2.5cm]{geometry}
+%\RequirePackage[body={16.0cm, 22.0cm},headsep=1.3cm,top=4cm,footskip=1.25cm,bottom=4.0cm,left=2.5cm,right=2.5cm]{geometry}
+%\RequirePackage[top=3.5cm,bottom=2.5cm,includefoot,footskip=1cm,headsep=0.25cm,left=2.5cm,right=2.5cm]{geometry}
+\RequirePackage[total={21cm,29.7cm},vmargin={0.76cm,3.0cm},includehead,headheight=2.05cm,headsep=1.15cm,includefoot,left=2.5cm,right=2.5cm]{geometry}
 
 \renewcommand\frontmatter{%
   \ifstoneside\clearpage\else\cleardoublepage\fi
@@ -311,13 +313,13 @@ BoldItalicFont=simfang.ttf
 
 \setlength{\parskip}{0pt}% 段距
 \newcommand{\mainlineskip}{1.25}% 主行距1.25
-\titlespacing{\chapter}{0pt}{-1\baselineskip}{1\baselineskip} % 标题间距
-\titlespacing{\subchapter}{0pt}{-1\baselineskip}{1\baselineskip} % 标题间距
-\titlespacing{\section}{0pt}{0pt}{0.5\baselineskip} % 标题间距
+\titlespacing{\chapter}{0pt}{0\baselineskip}{1\baselineskip} % 标题间距
+\titlespacing{\subchapter}{0pt}{0\baselineskip}{1\baselineskip} % 标题间距
+\titlespacing{\section}{0pt}{0.2\baselineskip}{0.3\baselineskip} % 标题间距
 %\titlespacing{\subsection}{0pt}{3ex plus .05ex minus .01ex}{2ex plus .04ex}
-\titlespacing{\subsection}{0pt}{0pt}{0.5\baselineskip} % 标题间距
+\titlespacing{\subsection}{0pt}{0.2\baselineskip}{0.3\baselineskip} % 标题间距
 %\titlespacing{\subsubsection}{0pt}{1.5ex plus .05ex minus .01ex}{1ex plus .01ex}
-\titlespacing{\subsubsection}{0pt}{0pt}{0.5\baselineskip} % 标题间距
+\titlespacing{\subsubsection}{0pt}{0.2\baselineskip}{0.3\baselineskip} % 标题间距
 \titlespacing{\paragraph}{0pt}{0pt}{0pt} % 标题间距
 \titlespacing{\subparagraph}{0pt}{0pt}{0pt} % 标题间距
 
@@ -758,7 +760,7 @@ BoldItalicFont=simfang.ttf
     \end{tabular}
   \end{flushright}
 
-    \ConChapter{Abstract}
+    \chapter*{Abstract}
   \par
   \else %硕博英文摘要样式，大连理工大学章节左对齐，因此不使用charpt
   %\chapter*{Abstract}
@@ -968,7 +970,7 @@ BoldItalicFont=simfang.ttf
   \phantomsection
   \addcontentsline{toc}{chapter}{\@acknowledgementtitletoc}
   %\vspace*{4pt plus 2pt minus 3pt} 
-\ConChapter{#1}
+\chapter*{#1}
 \addcontentsline{toe}{chapter}{Acknowledgement}
   %\chapter*{ #1}
   \song\xiaosihao %my change
