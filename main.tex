@@ -3,8 +3,8 @@
 % !Mode:: "TeX:UTF-8"
 
 %\documentclass[bachelor]{dutthesis} % 本科
-%\documentclass[master]{dutthesis} % 硕士
-\documentclass[doctor]{dutthesis} % 博士
+\documentclass[master]{dutthesis} % 硕士
+%\documentclass[doctor]{dutthesis} % 博士
 \usepackage{amsmath}
 \usepackage{amsfonts} 
 \usepackage{bm} 
@@ -121,6 +121,11 @@ upper-case and lower-case forms in parallel with Latin during the modern era.
 \input{SMTable.tex}
 
 \begin{Main} % 开始正文
+\ifmasterdegree
+\begin{Introduction}
+    硕士的坑爹引言这么写…… $\hbar\hbar\hbar$
+\end{Introduction}
+\fi
 \include{introcution}
 \include{chapt1}
 \include{chapt2}

@@ -142,6 +142,8 @@ BoldItalicFont=simfang.ttf
 \newcommand{\fs}{\CJKfamily{zhfs}}
 \setCJKfamilyfont{FZXingKai}[Path = ./font/]{FZXKK.TTF}
 \newcommand{\xkai}{\CJKfamily{FZXingKai}}
+\setCJKfamilyfont{YaHei}[Path = ./font/]{YaHei.ttf}
+\newcommand{\yahei}{\CJKfamily{YaHei}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  xelatex导致伪粗字体使得pdf中字体不能选中
@@ -516,13 +518,9 @@ BoldItalicFont=simfang.ttf
   % 封面
   \thispagestyle{empty}%
   \vspace*{2cm}
+  \ifdoctordegree
   \begin{center}
-    \ifdoctordegree
     {\xiaoyihao\song\CJKfakebold{博~士~学~位~论~文}}
-    \fi
-    \ifmasterdegree
-    {\xiaoyihao\xhei\CJKfakebold{硕~士~学~位~论~文}}
-    \fi
     \vspace{38.5pt plus 10pt minus 5pt}
 
     \linespread{1.25}
@@ -580,6 +578,73 @@ BoldItalicFont=simfang.ttf
      {\xiaoerhao \xkai \universityname} \\
      {\xiaosihao \universitynameeng}
   \end{center}
+  \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %  The master degree thesis has a different demand  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \ifmasterdegree
+    \begin{center}
+	{\xiaoyihao\song\CJKfakebold{硕~士~学~位~论~文}}
+	\vspace{38.5pt plus 10pt minus 5pt}
+
+	\linespread{1.25}
+
+	{
+	\erhao\xhei\bfseries{\@title}\\%题名 
+	\vspace{15pt}
+	\sanhao\hei\bfseries{\titlecap{\@titleeng}}\\%english题名，首字母大写
+	\vspace{120pt}
+	\xiaosanhao\xhei\@subtitle%副题名 
+	}
+    \vfill
+	%\addvspace{122pt plus 50pt minus 50pt}
+	\extrarowheight=20pt
+	\begin{tabular}{cr}
+	  \makebox[3.5cm][s]{\song\xiaosanhao\authorpre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\song\xiaosanhao{\@author}}
+	      \makebox[2cm][r]{}}} \\
+	  \makebox[3.5cm][s]{\xiaosanhao\song{}\majorpre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\xiaosanhao\song{\@major}}
+	      \makebox[2cm][r]{}}} \\
+	  \makebox[3.5cm][s]{\xiaosanhao\song\studentidpre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\xiaosanhao\song{\@studentid}}
+	      \makebox[2cm][r]{}}} \\
+	    \makebox[3.5cm][s]{\xiaosanhao\song\advisorpre} &
+	    \underline{\makebox[6cm][s]{
+		\hspace*{1cm}
+		\makebox[2.5cm][c]{\xiaosanhao\song{\@advisorname}}
+	\makebox[2cm][r]{\hspace*{-2cm}\xiaosanhao\song\@advisortitle}}}
+	    \\
+	 %   &
+	 %   \ifbcoadvisor
+	 %   \underline{\makebox[6cm][s]{
+	 %       \hspace*{1cm}
+	 %       \makebox[2.5cm][c]{\xiaoerhao\song\textbf{\@coadvisorname}}
+	 %       \makebox[2cm][r]{\xiaoerhao\song\textbf{\@coadvisortitle}}}}
+	 %   \else
+	 %   \fi \\
+	  \makebox[3.5cm][s]{\xiaosanhao\song{}\defenddatepre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\xiaosanhao\song{\@defenddate}}
+	      \makebox[2cm][r]{}}} \\
+	  \end{tabular}
+	\extrarowheight=0pt
+	  \\
+	  \addvspace{55pt plus 25pt minus 25pt}
+	  %\vfill
+	 {\xiaoerhao \xkai \universityname} \\
+	 {\xiaosihao \universitynameeng}
+     \end{center}
+ \fi
 
   \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
   \ifdutthesisthanks
@@ -773,7 +838,7 @@ BoldItalicFont=simfang.ttf
   \fi
 }{
   \par
-  \textbf{KEY WORDS:} \@keywords
+  \textbf{Key Words:} \@keywords
 }
 
 %%%%%%%%%%
@@ -962,6 +1027,22 @@ BoldItalicFont=simfang.ttf
   %\vspace*{4pt plus 2pt minus 3pt} 
 %\ConChapter{#1}
 \addcontentsline{toe}{chapter}{\@referecetitletoe}
+}{\par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Dut master thesis's introcution environment  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{Introduction}[1][\introcutionName]
+{%
+  \stcleardp
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\introcutionName}
+  %\vspace*{4pt plus 2pt minus 3pt} 
+\chapter*{\hfill #1 \hfill}
+\addcontentsline{toe}{chapter}{Introduction}
+  %\chapter*{ #1}
+  \song\xiaosihao %my change
 }{\par}
 
 \newenvironment{Acknowledgement}[1][\@acknowledgementtitle]
