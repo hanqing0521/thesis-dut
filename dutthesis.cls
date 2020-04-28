@@ -61,6 +61,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{scrhack}
+\RequirePackage[no-math]{fontspec-xetex}
 % my change
 %\RequirePackage{lmodern}
 \RequirePackage{doc}
@@ -1098,6 +1099,7 @@ BoldItalicFont=simfang.ttf
   \addcontentsline{toe}{chapter}{Resume}
   \song \xiaosihao
  \noindent
+ \renewcommand\arraystretch{1.3}
 }{\par}
 
 %%%%%%%%%%%%%%%
