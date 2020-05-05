@@ -1052,7 +1052,7 @@ BoldItalicFont=simfang.ttf
   \phantomsection
   \addcontentsline{toc}{chapter}{\@acknowledgementtitletoc}
   %\vspace*{4pt plus 2pt minus 3pt} 
-\chapter*{#1}
+\chapter*{\hfill #1 \hfill}
 \addcontentsline{toe}{chapter}{Acknowledgement}
   %\chapter*{ #1}
   \song\xiaosihao %my change
