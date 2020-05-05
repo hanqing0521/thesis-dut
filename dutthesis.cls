@@ -1111,7 +1111,7 @@ BoldItalicFont=simfang.ttf
   \stcleardp
   \phantomsection
   \addcontentsline{toc}{chapter}{结论}
-  \subchapter*{结论}
+  \chapter*{\hfill 结论 \hfill}
   \addcontentsline{toe}{chapter}{conclusion}
   \song \xiaosihao
 }{\par}
