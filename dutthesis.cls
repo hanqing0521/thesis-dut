@@ -518,7 +518,7 @@ BoldItalicFont=simfang.ttf
   \stcleardp
   % 封面
   \thispagestyle{empty}%
-  \vspace*{2cm}
+  \vspace*{1cm}
   \ifdoctordegree
   \begin{center}
     {\xiaoyihao\song\CJKfakebold{博~士~学~位~论~文}}
@@ -553,14 +553,15 @@ BoldItalicFont=simfang.ttf
             \makebox[2.5cm][c]{\xiaosanhao\song{\@advisorname}}
     \makebox[2cm][r]{\hspace*{-2cm}\xiaosanhao\song\@advisortitle}}}
         \\
-     %   &
-     %   \ifbcoadvisor
-     %   \underline{\makebox[6cm][s]{
-     %       \hspace*{1cm}
-     %       \makebox[2.5cm][c]{\xiaoerhao\song\textbf{\@coadvisorname}}
-     %       \makebox[2cm][r]{\xiaoerhao\song\textbf{\@coadvisortitle}}}}
-     %   \else
-     %   \fi \\
+        \ifbcoadvisor
+        &
+        \underline{\makebox[6cm][s]{
+            \hspace*{1cm}
+            \makebox[2.5cm][c]{\xiaosanhao\song\@coadvisorname}
+            \makebox[2cm][r]{\xiaosanhao\song\@coadvisortitle}}}
+	    \\
+        \else
+        \fi 
       \makebox[3.5cm][s]{\xiaosanhao\song{}\majorpre} &
       \underline{\makebox[6cm][s]{
           \hspace*{1cm}
@@ -574,7 +575,7 @@ BoldItalicFont=simfang.ttf
       \end{tabular}
     \extrarowheight=0pt
       \\
-      \addvspace{55pt plus 25pt minus 25pt}
+      \addvspace{40pt plus 25pt minus 25pt}
       %\vfill
      {\xiaoerhao \xkai \universityname} \\
      {\xiaosihao \universitynameeng}
@@ -624,14 +625,15 @@ BoldItalicFont=simfang.ttf
 		\makebox[2.5cm][c]{\xiaosanhao\song{\@advisorname}}
 	\makebox[2cm][r]{\hspace*{-2cm}\xiaosanhao\song\@advisortitle}}}
 	    \\
-	 %   &
-	 %   \ifbcoadvisor
-	 %   \underline{\makebox[6cm][s]{
-	 %       \hspace*{1cm}
-	 %       \makebox[2.5cm][c]{\xiaoerhao\song\textbf{\@coadvisorname}}
-	 %       \makebox[2cm][r]{\xiaoerhao\song\textbf{\@coadvisortitle}}}}
-	 %   \else
-	 %   \fi \\
+        \ifbcoadvisor
+        &
+        \underline{\makebox[6cm][s]{
+            \hspace*{1cm}
+            \makebox[2.5cm][c]{\xiaosanhao\song\@coadvisorname}
+            \makebox[2cm][r]{\xiaosanhao\song\@coadvisortitle}}}
+	    \\
+        \else
+        \fi 
 	  \makebox[3.5cm][s]{\xiaosanhao\song{}\defenddatepre} &
 	  \underline{\makebox[6cm][s]{
 	      \hspace*{1cm}
