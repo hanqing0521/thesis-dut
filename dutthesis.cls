@@ -518,7 +518,7 @@ BoldItalicFont=simfang.ttf
   \stcleardp
   % 封面
   \thispagestyle{empty}%
-  \vspace*{1cm}
+  \vspace{2cm plus 0.5cm minus 1.5cm}
   \ifdoctordegree
   \begin{center}
     {\xiaoyihao\song\CJKfakebold{博~士~学~位~论~文}}
@@ -576,7 +576,6 @@ BoldItalicFont=simfang.ttf
     \extrarowheight=0pt
       \\
       \addvspace{40pt plus 25pt minus 25pt}
-      %\vfill
      {\xiaoerhao \xkai \universityname} \\
      {\xiaosihao \universitynameeng}
   \end{center}
@@ -643,7 +642,6 @@ BoldItalicFont=simfang.ttf
 	\extrarowheight=0pt
 	  \\
 	  \addvspace{55pt plus 25pt minus 25pt}
-	  %\vfill
 	 {\xiaoerhao \xkai \universityname} \\
 	 {\xiaosihao \universitynameeng}
      \end{center}
@@ -802,7 +800,7 @@ BoldItalicFont=simfang.ttf
   \xiaosihao \song \linespacing{1.3}
 }{
 \par \vspace*{1.25\baselineskip}
-  \noindent \hei{\xiaosihao 关键词：} \hei \xiaosihao \@keywords
+  {\hei \xiaosihao 关键词：}  \xiaosihao \@keywords
 }
 
 %%%%%%%%%%
@@ -841,6 +839,7 @@ BoldItalicFont=simfang.ttf
   \fi
 }{
   \par
+\par \vspace*{1.25\baselineskip}
   \textbf{Key Words:} \@keywords
 }
 
