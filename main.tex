@@ -3,8 +3,8 @@
 % !Mode:: "TeX:UTF-8"
 
 %\documentclass[bachelor]{dutthesis} % 本科
-\documentclass[master]{dutthesis} % 硕士
-%\documentclass[doctor]{dutthesis} % 博士
+% \documentclass[master]{dutthesis} % 硕士
+\documentclass[doctor]{dutthesis} % 博士
 \usepackage{amsmath}
 \usepackage{amsfonts} 
 \usepackage{bm} 
@@ -178,6 +178,7 @@ upper-case and lower-case forms in parallel with Latin during the modern era.
 \end{Appendix}
 \begin{Reference}
 \bibliography{bibtex.bib}
+    \label{cha:reference}
 \end{Reference}
 \begin{Publics}
     首先列出博士生攻读博士学位期间发表（含已录用）与学位论文有关的学术论文，并注明属于学位论文内容的部分(章节)，作者（最多三个）、论文题目、刊物名称、时间、卷期号、页码以及检索信息、与学位论文相关章节。其他时间或与学位论文内容(章节)无关的论文不得列出。
@@ -194,18 +195,15 @@ upper-case and lower-case forms in parallel with Latin during the modern era.
 
 发表论文
 
-[1] DesES MaraisARAIS D. J., Strauss TRAUSS H. , SummonsUMMONS R. E., et al. Carbon isotope evidence for the stepwise oxidation of the Proterozoic environment [J]. Nature, 1992,359:605-609. (SCI检索号：123DX) （本学位论文第一章）$\hbar$
-~\\
+[1] DesES MaraisARAIS D. J., Strauss TRAUSS H. , SummonsUMMONS R. E., et al. Carbon isotope evidence for the stepwise oxidation of the Proterozoic environment [J]. Nature, 1992,359:605-609. (SCI检索号：123DX) （本学位论文第一章）
 
 参与科研项目
 
 [1] 国家自然科学基金项目(51276055)：西南喀斯特山区土地利用和土地覆被变化及其对土地资源可持续性影响研究，2013.1 – 2016.12，负责人：爱因斯坦。
-~\\
 
 发明专利
 
 [1] 发明人1，发明人2，发明人3. 多功能一次性压舌板:中国,92214985.2[P]. 发明类别：发明专利，公开（或授权）日期：1993,04,14.
-~\\
 
 
 获得奖励
@@ -255,13 +253,18 @@ upper-case and lower-case forms in parallel with Latin during the modern era.
 天下当混为一，安可分！三分者，徒先生之怪貌者也。
 $\ldots \cdots$
 \end{Resume}
+
+%+----------------------------------------------------------+
+%| 只有硕士的结尾需要这个版权说明，博士的跟承诺书在同一页。 |
+%+----------------------------------------------------------+
+\ifmasterdegree
 \authorizationpage
+\fi
+%%%%%%%%%%%%%%%%%%%%%%
+
 % 参考文献}
-%\bibliographystyle{GBT7714-2005NLang}
 \newpage
 \printindex % 索引
 
-%\begidex % 索引n{thebibliography}{99}
-%\bibliographystyle{ieee}
-%\bibliography{seuthesis}
+
 \end{document}

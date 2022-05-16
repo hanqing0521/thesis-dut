@@ -12,7 +12,10 @@
     本模板使用\XeLaTeX 。
 
 推荐论文每章放置在一个独立的tex文件中，然后使用\verb|\include|命令导入，为了提高
-编译速度，可以在导言区使用 \verb|\includeonly{<tex file1>,<tex file2}|
+编译速度，可以在导言区使用 
+\begin{lstlisting}
+\includeonly{<tex file1>,<tex file2>,...}
+\end{lstlisting}
 来分段编译。
 
 \section{字体}
@@ -103,6 +106,45 @@ hyperref包可以通过命令 \verb|\hypersetup{× = ×}| 设置引用连接的�
 \end{lstlisting}
 请记得添加Reference环境！
 
+本参考文献样式使用\hyperlink{https://github.com/zepinglee/gbt7714-bibtex-style}
+{gbt7714-bibtex-style}，该样式可定制性强，arXiv支持做的还可以。我并对其中的gbt7714-numberical.bst做了一定修改，有需要可根据文档修改
+\begin{lstlisting}[language=TeX]
+FUNCTION {load.config}
+{
+  #2 'citation.et.al.min :=
+  #1 'citation.et.al.use.first :=
+  #4 'bibliography.et.al.min :=
+  #3 'bibliography.et.al.use.first :=
+  #1 'uppercase.name :=
+  #0 'terms.in.macro :=
+  #0 'year.after.author :=
+  #1 'period.after.author :=
+  #0 'italic.book.title :=
+  #1 'sentence.case.title :=
+  #1 'link.title :=
+  #1 'title.in.journal :=
+  #0 'show.patent.country :=
+  #1 'show.mark :=
+  #0 'space.before.mark :=
+  #1 'show.medium.type :=
+  "slash" 'component.part.label :=
+  #0 'short.journal :=
+  #1 'italic.journal :=
+  #1 'bold.journal.volume :=
+  #0 'show.missing.address.publisher :=
+  #1 'space.before.pages :=
+  #1 'only.start.page :=
+  #0 'wave.dash.in.pages :=
+  #1 'show.urldate :=
+  #0 'show.url :=
+  #0 'show.doi :=
+  #1 'show.preprint :=
+  #0 'show.note :=
+  #0 'show.english.translation :=
+  #1 'end.with.period :=
+}
+\end{lstlisting}
+效果见\hyperref[cha:reference]{参考文献}
 \section{章节、目录以及相关杂项}
 \esection{chapter,section, contents and others}
 \label{sec:Chapter-section-contents-others}

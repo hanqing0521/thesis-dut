@@ -73,8 +73,9 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{indentfirst}
 \RequirePackage{makeidx} % 索引
-\RequirePackage[numbers,sort&compress]{natbib} % 修改引用参考文献格式
-\RequirePackage[2015,numbers]{gbt7714} % 生成中文参考文献,使用numbers用来压制默认上角标文献
+\RequirePackage[sort&compress]{natbib} % 修改引用参考文献格式
+\RequirePackage{gbt7714}
+\bibliographystyle{gbt7714-numerical}
 \RequirePackage{array} % 扩展了 array 和 tabular 环境功能
 \RequirePackage[subfigure]{ccaption}
 \RequirePackage{caption} % 定义图的标题格式：居中. 使用caption3.0
@@ -1008,13 +1009,8 @@ BoldItalicFont=simfang.ttf
 \setcounter{tocdepth}{3}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  GBT7714中的上标参考文献被禁用，手动修改上标，同时保留inline  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\let\originalcite=\cite
-\renewcommand{\cite}[1]{\textsuperscript{\originalcite{#1}}}
-\renewcommand{\citet}[1]{\originalcite{#1}}
+
 
 %%%%%%%%%%%%%%%%%%%%
 %  参考文献，其中参考文献题目右\bibname
