@@ -61,6 +61,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{scrhack}
+\RequirePackage[no-math]{fontspec-xetex}
 % my change
 %\RequirePackage{lmodern}
 \RequirePackage{doc}
@@ -72,8 +73,9 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{indentfirst}
 \RequirePackage{makeidx} % 索引
-\RequirePackage[numbers,sort&compress]{natbib} % 修改引用参考文献格式
-\RequirePackage[2015,numbers]{gbt7714} % 生成中文参考文献,使用numbers用来压制默认上角标文献
+\RequirePackage[sort&compress]{natbib} % 修改引用参考文献格式
+\RequirePackage{gbt7714}
+\bibliographystyle{gbt7714-numerical}
 \RequirePackage{array} % 扩展了 array 和 tabular 环境功能
 \RequirePackage[subfigure]{ccaption}
 \RequirePackage{caption} % 定义图的标题格式：居中. 使用caption3.0
@@ -95,7 +97,7 @@
 \RequirePackage{xstring} % 提供字符比较命令 \IfSubStr
 \newcommand{\AppendixListAlph}{ABCDEFGHIGK} %指定附录使用指标，目录中附录标题通过字母章节计数器识别
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Uppercase the english title (chaper,section,...)  %
+%  Uppercase the english title (chapter,section,...)  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{titlecaps}
 \Addlcwords{a an the and or nor for but so yet to of by at for but in with has
@@ -142,6 +144,8 @@ BoldItalicFont=simfang.ttf
 \newcommand{\fs}{\CJKfamily{zhfs}}
 \setCJKfamilyfont{FZXingKai}[Path = ./font/]{FZXKK.TTF}
 \newcommand{\xkai}{\CJKfamily{FZXingKai}}
+\setCJKfamilyfont{YaHei}[Path = ./font/]{YaHei.ttf}
+\newcommand{\yahei}{\CJKfamily{YaHei}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  xelatex导致伪粗字体使得pdf中字体不能选中
@@ -251,7 +255,9 @@ BoldItalicFont=simfang.ttf
 %%%%%%%%%%
 %  页面结构  %
 %%%%%%%%%%
-\RequirePackage[body={16.0cm, 22.0cm},headsep=1.3cm,top=4cm,footskip=1.25cm,bottom=4.0cm,left=2.5cm,right=2.5cm]{geometry}
+%\RequirePackage[body={16.0cm, 22.0cm},headsep=1.3cm,top=4cm,footskip=1.25cm,bottom=4.0cm,left=2.5cm,right=2.5cm]{geometry}
+%\RequirePackage[top=3.5cm,bottom=2.5cm,includefoot,footskip=1cm,headsep=0.25cm,left=2.5cm,right=2.5cm]{geometry}
+\RequirePackage[total={21cm,29.7cm},vmargin={0.76cm,3.0cm},includehead,headheight=2.05cm,headsep=1.15cm,includefoot,left=2.5cm,right=2.5cm]{geometry}
 
 \renewcommand\frontmatter{%
   \ifstoneside\clearpage\else\cleardoublepage\fi
@@ -311,13 +317,13 @@ BoldItalicFont=simfang.ttf
 
 \setlength{\parskip}{0pt}% 段距
 \newcommand{\mainlineskip}{1.25}% 主行距1.25
-\titlespacing{\chapter}{0pt}{-1\baselineskip}{1\baselineskip} % 标题间距
-\titlespacing{\subchapter}{0pt}{-1\baselineskip}{1\baselineskip} % 标题间距
-\titlespacing{\section}{0pt}{0pt}{0.5\baselineskip} % 标题间距
+\titlespacing{\chapter}{0pt}{0\baselineskip}{1\baselineskip} % 标题间距
+\titlespacing{\subchapter}{0pt}{0\baselineskip}{1\baselineskip} % 标题间距
+\titlespacing{\section}{0pt}{0.2\baselineskip}{0.3\baselineskip} % 标题间距
 %\titlespacing{\subsection}{0pt}{3ex plus .05ex minus .01ex}{2ex plus .04ex}
-\titlespacing{\subsection}{0pt}{0pt}{0.5\baselineskip} % 标题间距
+\titlespacing{\subsection}{0pt}{0.2\baselineskip}{0.3\baselineskip} % 标题间距
 %\titlespacing{\subsubsection}{0pt}{1.5ex plus .05ex minus .01ex}{1ex plus .01ex}
-\titlespacing{\subsubsection}{0pt}{0pt}{0.5\baselineskip} % 标题间距
+\titlespacing{\subsubsection}{0pt}{0.2\baselineskip}{0.3\baselineskip} % 标题间距
 \titlespacing{\paragraph}{0pt}{0pt}{0pt} % 标题间距
 \titlespacing{\subparagraph}{0pt}{0pt}{0pt} % 标题间距
 
@@ -513,14 +519,10 @@ BoldItalicFont=simfang.ttf
   \stcleardp
   % 封面
   \thispagestyle{empty}%
-  \vspace*{2cm}
+  \vspace{2cm plus 0.5cm minus 1.5cm}
+  \ifdoctordegree
   \begin{center}
-    \ifdoctordegree
     {\xiaoyihao\song\CJKfakebold{博~士~学~位~论~文}}
-    \fi
-    \ifmasterdegree
-    {\xiaoyihao\xhei\CJKfakebold{硕~士~学~位~论~文}}
-    \fi
     \vspace{38.5pt plus 10pt minus 5pt}
 
     \linespread{1.25}
@@ -552,14 +554,15 @@ BoldItalicFont=simfang.ttf
             \makebox[2.5cm][c]{\xiaosanhao\song{\@advisorname}}
     \makebox[2cm][r]{\hspace*{-2cm}\xiaosanhao\song\@advisortitle}}}
         \\
-     %   &
-     %   \ifbcoadvisor
-     %   \underline{\makebox[6cm][s]{
-     %       \hspace*{1cm}
-     %       \makebox[2.5cm][c]{\xiaoerhao\song\textbf{\@coadvisorname}}
-     %       \makebox[2cm][r]{\xiaoerhao\song\textbf{\@coadvisortitle}}}}
-     %   \else
-     %   \fi \\
+        \ifbcoadvisor
+        &
+        \underline{\makebox[6cm][s]{
+            \hspace*{1cm}
+            \makebox[2.5cm][c]{\xiaosanhao\song\@coadvisorname}
+            \makebox[2cm][r]{\xiaosanhao\song\@coadvisortitle}}}
+	    \\
+        \else
+        \fi 
       \makebox[3.5cm][s]{\xiaosanhao\song{}\majorpre} &
       \underline{\makebox[6cm][s]{
           \hspace*{1cm}
@@ -573,11 +576,77 @@ BoldItalicFont=simfang.ttf
       \end{tabular}
     \extrarowheight=0pt
       \\
-      \addvspace{55pt plus 25pt minus 25pt}
-      %\vfill
+      \addvspace{40pt plus 25pt minus 25pt}
      {\xiaoerhao \xkai \universityname} \\
      {\xiaosihao \universitynameeng}
   \end{center}
+  \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %  The master degree thesis has a different demand  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \ifmasterdegree
+    \begin{center}
+	{\xiaoyihao\song\CJKfakebold{硕~士~学~位~论~文}}
+	\vspace{38.5pt plus 10pt minus 5pt}
+
+	\linespread{1.25}
+
+	{
+	\erhao\xhei\bfseries{\@title}\\%题名 
+	\vspace{15pt}
+	\sanhao\hei\bfseries{\titlecap{\@titleeng}}\\%english题名，首字母大写
+	\vspace{120pt}
+	\xiaosanhao\xhei\@subtitle%副题名 
+	}
+    \vfill
+	%\addvspace{122pt plus 50pt minus 50pt}
+	\extrarowheight=20pt
+	\begin{tabular}{cr}
+	  \makebox[3.5cm][s]{\song\xiaosanhao\authorpre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\song\xiaosanhao{\@author}}
+	      \makebox[2cm][r]{}}} \\
+	  \makebox[3.5cm][s]{\xiaosanhao\song{}\majorpre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\xiaosanhao\song{\@major}}
+	      \makebox[2cm][r]{}}} \\
+	  \makebox[3.5cm][s]{\xiaosanhao\song\studentidpre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\xiaosanhao\song{\@studentid}}
+	      \makebox[2cm][r]{}}} \\
+	    \makebox[3.5cm][s]{\xiaosanhao\song\advisorpre} &
+	    \underline{\makebox[6cm][s]{
+		\hspace*{1cm}
+		\makebox[2.5cm][c]{\xiaosanhao\song{\@advisorname}}
+	\makebox[2cm][r]{\hspace*{-2cm}\xiaosanhao\song\@advisortitle}}}
+	    \\
+        \ifbcoadvisor
+        &
+        \underline{\makebox[6cm][s]{
+            \hspace*{1cm}
+            \makebox[2.5cm][c]{\xiaosanhao\song\@coadvisorname}
+            \makebox[2cm][r]{\xiaosanhao\song\@coadvisortitle}}}
+	    \\
+        \else
+        \fi 
+	  \makebox[3.5cm][s]{\xiaosanhao\song{}\defenddatepre} &
+	  \underline{\makebox[6cm][s]{
+	      \hspace*{1cm}
+	      \makebox[2.5cm][c]{\xiaosanhao\song{\@defenddate}}
+	      \makebox[2cm][r]{}}} \\
+	  \end{tabular}
+	\extrarowheight=0pt
+	  \\
+	  \addvspace{55pt plus 25pt minus 25pt}
+	 {\xiaoerhao \xkai \universityname} \\
+	 {\xiaosihao \universitynameeng}
+     \end{center}
+ \fi
 
   \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
   \ifdutthesisthanks
@@ -732,7 +801,7 @@ BoldItalicFont=simfang.ttf
   \xiaosihao \song \linespacing{1.3}
 }{
 \par \vspace*{1.25\baselineskip}
-  \noindent \hei{\xiaosihao 关键词：} \hei \xiaosihao \@keywords
+  {\hei \xiaosihao 关键词：}  \xiaosihao \@keywords
 }
 
 %%%%%%%%%%
@@ -758,7 +827,7 @@ BoldItalicFont=simfang.ttf
     \end{tabular}
   \end{flushright}
 
-    \ConChapter{Abstract}
+    \chapter*{Abstract}
   \par
   \else %硕博英文摘要样式，大连理工大学章节左对齐，因此不使用charpt
   %\chapter*{Abstract}
@@ -771,7 +840,8 @@ BoldItalicFont=simfang.ttf
   \fi
 }{
   \par
-  \textbf{KEY WORDS:} \@keywords
+\par \vspace*{1.25\baselineskip}
+  \textbf{Key Words:} \@keywords
 }
 
 %%%%%%%%%%
@@ -939,13 +1009,8 @@ BoldItalicFont=simfang.ttf
 \setcounter{tocdepth}{3}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  GBT7714中的上标参考文献被禁用，手动修改上标，同时保留inline  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\let\originalcite=\cite
-\renewcommand{\cite}[1]{\textsuperscript{\originalcite{#1}}}
-\renewcommand{\citet}[1]{\originalcite{#1}}
+
 
 %%%%%%%%%%%%%%%%%%%%
 %  参考文献，其中参考文献题目右\bibname
@@ -962,13 +1027,29 @@ BoldItalicFont=simfang.ttf
 \addcontentsline{toe}{chapter}{\@referecetitletoe}
 }{\par}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Dut master thesis's introcution environment  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{Introduction}[1][\introcutionName]
+{%
+  \stcleardp
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\introcutionName}
+  %\vspace*{4pt plus 2pt minus 3pt} 
+\chapter*{\hfill #1 \hfill}
+\addcontentsline{toe}{chapter}{Introduction}
+  %\chapter*{ #1}
+  \song\xiaosihao %my change
+}{\par}
+
 \newenvironment{Acknowledgement}[1][\@acknowledgementtitle]
 {%
   \stcleardp
   \phantomsection
   \addcontentsline{toc}{chapter}{\@acknowledgementtitletoc}
   %\vspace*{4pt plus 2pt minus 3pt} 
-\ConChapter{#1}
+\chapter*{\hfill #1 \hfill}
 \addcontentsline{toe}{chapter}{Acknowledgement}
   %\chapter*{ #1}
   \song\xiaosihao %my change
@@ -1015,6 +1096,7 @@ BoldItalicFont=simfang.ttf
   \addcontentsline{toe}{chapter}{Resume}
   \song \xiaosihao
  \noindent
+ \renewcommand\arraystretch{1.3}
 }{\par}
 
 %%%%%%%%%%%%%%%
@@ -1026,7 +1108,7 @@ BoldItalicFont=simfang.ttf
   \stcleardp
   \phantomsection
   \addcontentsline{toc}{chapter}{结论}
-  \subchapter*{结论}
+  \chapter*{\hfill 结论 \hfill}
   \addcontentsline{toe}{chapter}{conclusion}
   \song \xiaosihao
 }{\par}

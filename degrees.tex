@@ -132,6 +132,9 @@ $\ldots \cdots$
 
 硕士论文只有中文目录，且中英文摘要都要进入目录。
 
+硕士论文的Introduction定义了新环境，因为格式特殊，所以要在Introduction环境中写，
+坑爹啊！！！
+
 硕士论文有一章为结论，定义了Conclusion环境,博士模板无此环境！！！
 \begin{lstlisting}[language=TeX]
 %%%%%%%%%%%%%%%
@@ -152,7 +155,18 @@ $\ldots \cdots$
 
 硕士论文发表情况页面自动根据 \lstinline|\@degree| 修改，选择硕士论文选项就好。
 
-硕士论文的版权页面将自动生成，为最后一页。
+硕士论文的版权页面将自动生成，为最后一页。(main.tex 中包含代码)
+\begin{lstlisting}
+%+----------------------------------------------------------+
+%| 只有硕士的结尾需要这个版权说明，博士的跟承诺书在同一页。 |
+%+----------------------------------------------------------+
+\ifmasterdegree
+\authorizationpage
+\fi
+%%%%%%%%%%%%%%%%%%%%%%
+\end{lstlisting}
+
+
 \section{学士学位}
 \esection{bachelor}
 Waiting
