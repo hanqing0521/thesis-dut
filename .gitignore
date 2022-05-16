@@ -1,3 +1,5 @@
+# fonts
+font/*
 # swp file of vim
 *.swp
 ## Core latex/pdflatex auxiliary files:
